@@ -1,0 +1,46 @@
+package c03zad5;
+import java.lang.Comparable;
+
+public abstract class Figura implements Obliczanie, Comparable<Figura> {
+    protected int x;
+    protected int y;
+    static int licznik = 0;
+    protected int numer = licznik++;
+
+    public Figura(int x, int y){
+        this.x = x;
+        this.y = y;
+    }
+
+    public abstract String nazwaFigury();
+    public abstract void pozycja( int a, int b);
+
+    @Override
+    public int compareTo(Figura f) {
+
+        if (this.pole() - f.pole() < 0)
+            return -1;	// < 0
+        else if (this.pole() - f.pole() > 0)
+            return 1; 	// > 0
+        else if (this.obwod() - f.obwod() < 0)
+            return -1;	// < 0
+        else if (this.obwod() - f.obwod() > 0)
+            return 1;
+        else
+            return this.numer - f.numer;
+    }
+
+    @Override
+    public double obwod() {
+        return 0;
+    }
+
+    @Override
+    public double pole() {
+        return 0;
+    }
+
+    public String toString(){
+        return "Numer: " + numer + "\n";
+    }
+}
